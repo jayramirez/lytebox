@@ -110,8 +110,7 @@ function Lytebox(container){
 										.addClass('lytebox-buttons')
 										.addClass(btnAlign);
 
-					//Buttons.append('<input type="button" value="'+okCaption+'" class="lytebox-ok"/>');
-					Buttons.append('<button class="lytebox-ok"><i>'+okCaption+'</i></button>');
+					Buttons.append('<input type="button" value="'+okCaption+'" class="lytebox-ok"/>');
 					
 					if(params.type=='confirm') Buttons.append('<input type="button" value="'+cancelCaption+'" class="lytebox-cancel" />');
 					 
@@ -119,7 +118,6 @@ function Lytebox(container){
 				
 				Container.append(content);
 				Container.append(Buttons);
-				Container.wrapInner('<div class="content"></div>')
 				Container.addClass(align);
 				thisClass.display();
 				
@@ -127,7 +125,7 @@ function Lytebox(container){
 		}else{
 			//simple string message
 			content	= params;
-			Container.append('<div class="content">'+content+'</div>');
+			Container.append(content);
 			thisClass.display();
 		}
 	}
@@ -178,9 +176,10 @@ function Lytebox(container){
 		var wh = $(window).height();
 		var cw = Container.outerWidth();
 
-		var posTop = Options.top!==false && Options.top!=undefined ? Options.top : ((ch-100)/2);
+		var posTop = Options.top!==false && Options.top!=undefined ? Options.top : (wh/2) - (ch/2);
 		var marLeft = (cw/2) * (-1);
 
+		console.log(ch)
 		Container.css({
 				top : posTop,
 				marginLeft: marLeft}) ;

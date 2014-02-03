@@ -1,0 +1,120 @@
+@charset "utf-8";
+/* CSS Document */
+.clear {clear: both; line-height: 0; margin: 0; }
+
+body {
+ 	font:14px MuliRegular;
+ 	line-height: 22px;
+ 	background: #DAE8ED
+ }
+
+ .content{
+ 	margin: 20px auto; 
+ 	width:900px;
+ 	background:#fff; 
+ 	padding:20px;
+ 	box-shadow: 0px -2px 150px #5E828E
+ }
+
+ h1.title{
+ 	text-align: center;
+ 	font-size: 30px;
+ 	padding: 20px 0;
+ }
+
+ .details{ 
+ 	border: solid #ccc;
+ 	border-width: 1px 0 1px 0
+ }
+ .details ul{
+ 	float: left;
+ 	padding:10px 0;
+ 	margin: 0;
+ 	list-style: none;
+ }
+ 	.details ul li{
+ 		padding: 5px 10px 0
+ 	}
+ 	.details .author{
+ 		width: 30%;
+ 	}
+ 	.details .project{
+ 		border-left: solid 1px #ccc;
+ 		width: 69%;
+ 	}
+
+h2{
+	font-size: 20px;
+	margin-top: 50px;
+	padding:0;
+}
+
+table{
+	border: solid #ccc;
+	border-width: 0px 0px 1px 1px ;
+	font-size: 12px 
+}
+table td,table th{
+	border: solid #ccc;
+	border-width: 1px 1px 0px 0px;
+	padding: 3px 10px;
+}
+
+    pre{
+    	font:13px 'Lucida Console';
+    	color:#008883;
+    	background: #f1f1f1;
+    	padding:20px 0;
+    	margin-bottom: 30px;
+    }
+    pre i{
+    	font:13px 'Lucida Console';
+    	color:#900;
+    }
+a{
+	cursor: pointer; 
+	border: solid 1px #ccc;
+	 padding: 2px 5px; 
+	 font-size: 12px
+	}
+
+
+.footer{
+	border-top: solid 1px #ccc;
+	text-align: center;
+	font-size: 11px;
+	color: #999;
+	margin-top: 50px
+}
+.footer p{
+	margin: 3px 0 1px
+}
+
+
+
+
+/* Extra small devices (phones, less than 768px) */
+@media (max-width: 767px) {
+	.content{
+		width: 100%;
+		-moz-box-sizing:border-box;
+	}
+	table, pre, .details{
+		display: none;
+	}
+
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991px) {
+  
+}
+
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  
+}
+
+@media (min-width: 1200px) {
+}

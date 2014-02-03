@@ -28,7 +28,7 @@ params   =  string /object;
 width  	  = int;
 */
 
-function Lytebox(){
+function Lytebox(container){
 	
 	var thisClass = this;
 	var onCloseCallback	= false;
@@ -38,12 +38,13 @@ function Lytebox(){
 	var Container;
 
 	var Document = $(document);
+	var isPage;
 
 	thisClass.open	= function(params,width){
 
-		var Body = $('body');
+		var Body = container ? $(container) : $('body');
 			Options   = params;
-
+			isPage    = false;
 			Lightbox  = createElement()
 							.addClass('lytebox');
 			Container = createElement()
@@ -53,7 +54,7 @@ function Lytebox(){
 		if( !params.url ){
 			createElement()
 				.addClass('lytebox-close')
-				.html('x')
+				.html('&times;')
 				.appendTo(Container);
 		}		
 
@@ -62,7 +63,7 @@ function Lytebox(){
 
 
 		Lightbox.appendTo(Body);
-		Lightbox.css({ height : Document.height() });
+		//Lightbox.css({ height : Document.height() });
 		
 		if(width) Container.css({ width : width });
 		if(params.width) Container.css({ width : params.width });
@@ -72,6 +73,7 @@ function Lytebox(){
 		//append content	
 		if(params instanceof Object){
 			if(params.url){
+				isPage = true;
 				//iframe popup
 				//thisClass.preload();
 				if(params.data){
@@ -108,7 +110,8 @@ function Lytebox(){
 										.addClass('lytebox-buttons')
 										.addClass(btnAlign);
 
-					Buttons.append('<input type="button" value="'+okCaption+'" class="lytebox-ok"/>');
+					//Buttons.append('<input type="button" value="'+okCaption+'" class="lytebox-ok"/>');
+					Buttons.append('<button class="lytebox-ok"><i>'+okCaption+'</i></button>');
 					
 					if(params.type=='confirm') Buttons.append('<input type="button" value="'+cancelCaption+'" class="lytebox-cancel" />');
 					 
@@ -116,6 +119,7 @@ function Lytebox(){
 				
 				Container.append(content);
 				Container.append(Buttons);
+				Container.wrapInner('<div class="content"></div>')
 				Container.addClass(align);
 				thisClass.display();
 				
@@ -123,7 +127,7 @@ function Lytebox(){
 		}else{
 			//simple string message
 			content	= params;
-			Container.append(content);
+			Container.append('<div class="content">'+content+'</div>');
 			thisClass.display();
 		}
 	}
@@ -173,18 +177,36 @@ function Lytebox(){
 		var ch = Container.outerHeight();
 		var wh = $(window).height();
 		var cw = Container.outerWidth();
-		Container.css({
-			top : Options.top!==false && Options.top!=undefined ? Options.top : ((wh-ch)/2),
-			marginLeft:  (cw/2) * (-1)});
 
+		var posTop = Options.top!==false && Options.top!=undefined ? Options.top : ((ch-100)/2);
+		var marLeft = (cw/2) * (-1);
+
+		Container.css({
+				top : posTop,
+				marginLeft: marLeft}) ;
+
+		if( !isDesktop && isPage ){
+			posTop = Options.top!==false && Options.top!=undefined ? Options.top : 0;
+			Container.css({
+				position : 'relative',
+				top : posTop
+			});
+			//Lightbox.css({height:Container.height()})
+		}
 	}
 
 	function createElement(element){
 		element = element==undefined ? 'div' : element;
-
 		return $('<'+element+'></'+element+'>');
-		
 	}
+
+	function isDesktop(){
+		if( $(window).width() < 992 ){
+			return  false;
+		}
+		return true;
+	}
+
 	function enableButtons(){
 		/********** START LYTEBOX CONTROL ************/	
 		var btnOkay	  = $('.lytebox-ok');
@@ -221,9 +243,11 @@ function Lytebox(){
 		}
 		
 		if(Options.blurClose!==false){
-			Lightbox.bind('click',function(){
-				if(Options.closeButton!=false && Options.type!='alert' && Options.type!='confirm')
-				thisClass.close(Options.onClose);
+			Lightbox.bind('click',function(e){
+				if($(e.target).hasClass('lytebox')){
+					if(Options.closeButton!=false && Options.type!='alert' && Options.type!='confirm')
+					thisClass.close(Options.onClose);
+				}
 			});
 		}
 		

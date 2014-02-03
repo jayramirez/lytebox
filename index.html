@@ -1,0 +1,284 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>LYTEBOX</title>
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="css/fonts.css" />
+<link rel="stylesheet" type="text/css" href="css/lytebox.2.2.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/lytebox.2.2.js"></script>
+</head>
+
+<body>
+	<div class="content">
+
+    <h1 class="title">Lytebox 2.2</h1>
+
+     <div class="details">
+        <ul class="author">
+            <li><b>Author:</b>Jay Ramirez</li>
+            <li><b>Revised:</b> December 12, 2013</li>
+        </ul>
+
+        <ul class="project">
+            <li>Lytebox is a popup. </li>
+            <li><b>Compatibility: </b> IE7 and Higher, all major browsers.</li>
+            <li><b>Requirement: </b> jQuery library </li>
+            <li><b>ChangeLog:</b>
+                <ol>
+                    <li>Code has been optimized</li>
+                    <li>Fixed bug on centering - vertically and horizontally</li>
+                    <li>Image remove 'transparent.png' background [replaced with css rgba()]</li>
+                    <li>Add 'lytebox-title' class to the <i>popup title bar</i> (using h2 html tag) -for frontends</li>
+                </ol>
+            </li>
+        </ul>
+
+        <br class="clear" />
+    </div>
+
+
+    <h2>PARAMS</h2>
+
+    <table cellspacing="0">
+        <tr>
+            <th width="100">Object</th>
+            <th width="150">Type</th>
+            <th width="100">Default</th>
+            <th width="400">Description</th>
+        </tr>
+        <tr>
+            <td colspan="4" bgcolor="#FFFBC9">GLOBAL PARAMS</td>
+        </tr> 
+        <tr>
+            <td>params.top</td>
+            <td>int</td>
+            <td> auto </td>
+            <td>position top of the popup content</td>
+        </tr>    
+        <tr>
+            <td>params.width</td>
+            <td>int</td>
+            <td> 300 </td>
+            <td>width popup content.</td>
+        </tr>    
+        <tr>
+            <td>params.title</td>
+            <td>string</td>
+            <td>blank</td>
+            <td>Heading title of the popup</td>
+        </tr>    
+        <tr>
+            <td>params.message</td>
+            <td>string</td>
+            <td></td>
+            <td>copy, description, caption</td>
+        </tr>    
+            
+        <tr>
+            <td>params.align</td>
+            <td>string</td>
+            <td>left</td>
+            <td>text alignment inside the popup.  ('center','left','right')</td>
+        </tr>
+        <tr>
+            <td>params.closeButton</td>
+            <td>boolean</td>
+            <td>true</td>
+            <td>some popups dont need a close button, set to false</td>
+        </tr> 
+        <tr>
+            <td>params.escButton</td>
+            <td>boolean</td>
+            <td>true</td>
+            <td>close popup with esc key</td>
+        </tr>    
+        <tr>
+            <td>params.blurClose</td>
+            <td>boolean</td>
+            <td>true</td>
+            <td>close popup by clicking the transparent background</td>
+        </tr>    
+        <tr>
+            <td>params.addClass</td>
+            <td>string</td>
+            <td>blank</td>
+            <td>add class attribute to popup content for custom style</td>
+        </tr>    
+        <tr>
+            <td>params.fadeOut</td>
+            <td>int [mili seconds]</td>
+            <td>blank</td>
+            <td>popup will auto close after the given time</td>
+        </tr>    
+        <tr>
+            <td>params.onOpen</td>
+            <td>function</td>
+            <td>blank</td>
+            <td>callback function after opening the popup</td>
+        </tr>    
+        <tr>
+            <td>params.onClose</td>
+            <td>function</td>
+            <td>blank</td>
+            <td>callback function after closing the popup</td>
+        </tr> 
+        <tr><td colspan="4" bgcolor="#FFFBC9">POPUP TYPES</td></tr>    
+        <tr>
+            <td>params.type</td>
+            <td>string ['alert', 'confirm']</td>
+            <td></td>
+            <td>
+                alert = message box with 'ok' button, <br/>
+                confirm = message box with 'ok' and 'cancel' button
+            </td>
+        </tr>
+        <tr>
+            <td>params.onConfirm</td>
+            <td>function</td>
+            <td>blank</td>
+            <td>callback function when 'ok' button is clicked (requires params.type)</td>
+        </tr>    
+        <tr>
+            <td>params.onCancel</td>
+            <td>function</td>
+            <td>blank</td>
+            <td>callback function when 'cancel' button is clicked (requires params.type='confirm')</td>
+        </tr>   
+        <tr>
+            <td>params.okCaption</td>
+            <td>string</td>
+            <td>'Ok'</td>
+            <td>caption of the ok button</td>
+        </tr>    
+        <tr>
+            <td>params.cancelCaption</td>
+            <td>string</td>
+            <td>'Cancel'</td>
+            <td>caption of the caption button</td>
+        </tr>    
+
+        <tr>
+            <td>params.buttonAlign</td>
+            <td>string ['left', 'right', 'center']</td>
+            <td>right</td>
+            <td>button alignment</td>
+        </tr> 
+        <tr><td colspan="4" bgcolor="#FFFBC9">EXTERNAL POPUP CONTENT</td></tr>    
+        <tr>
+            <td>params.url</td>
+             <td>string [url]</td>
+            <td></td>
+            <td>url of page. (html,php)</td>
+        </tr>    
+        <tr>
+            <td>params.data</td>
+            <td>object</td>
+            <td>blank</td>
+            <td>data passed to the params.url. Fetch the data from the external page using $_GET</td>
+        </tr> 
+        
+    </table>
+
+    <h2>EXECUTION:</h2>
+    <pre>
+        popup.open(<i>params</i>);
+    </pre>
+
+    <h2>MESSAGE POPUP</h2>
+    <p>Simple message popup <a onclick="popup.open({message:'Hello world'})">Demo</a></p>
+    <pre>
+        popup.open({message: <i>'Hello world'</i>})
+    </pre>
+
+    <p>added <i>title</i> parameter <a onclick="popup.open({message:'Hello world',title: 'Sample'})">Demo</a></p>
+    <pre>
+        popup.open({message: <i>'Hello world'</i>, title: <i>'Sample'</i>})
+    </pre>
+
+    <p>added <i>align</i> parameter  <a onclick="popup.open({message:'Hello world', title: 'Sample', align:'center'})">Demo</a></p> 
+    <pre>
+        popup.open({message: <i>'Hello world'</i>, title: <i>'Sample'</i>, align: <i>'center'</i>})
+    </pre>
+
+    <p><b>short hand:</b> this will only accept 1 string parameter <a onclick="popup.open('hello world')">Demo</a></p> 
+    <pre>
+        popup.open(<i>'hello world'</i>)
+    </pre>
+
+    <h2>ALERT MESSAGE </h2>
+    <p>added <i>type</i> parameter with 'alert' value:  <a onclick="popup.open({message:'Hello world',title: 'Sample',type:'alert'})">Demo</a></p>
+    <pre>
+        popup.open({message: <i>'Hello world'</i>, title: <i>'Sample'</i>, type: <i>'alert'</i>})
+    </pre>
+
+    <p><b>short hand:</b> accepts 3 parameters, (message, string title [optional], callback function [optional] ) <br> 
+        <a onclick="popup.alert('hello world')">Demo 1</a> 
+        <a onclick="popup.alert('hello world','HEADING TITLE')">Demo 2</a> 
+        <a onclick="popup.alert('hello world','HEADING TITLE',function(){alert('ok button was clicked')})">Demo 3</a>
+    </p>
+
+    <pre>
+        //demo 1
+        popup.alert(<i>'hello world'</i>)
+
+        //demo 2
+        popup.alert(<i>'hello world'</i>, <i>'HEADING TITLE'</i>)
+
+        //demo 3
+        popup.alert(<i>'hello world'</i>, <i>'HEADING TITLE'</i>, <i>function(){alert('ok button was clicked')}</i>)
+    </pre>
+
+    <h2>CONFIRM MESSAGE</h2>
+    <p><i>type</i> parameter with 'confirm' value: <a onclick="popup.open({message:'Hello world',title: 'Sample',type:'confirm'})">Demo</a></p>
+    <pre>
+        popup.open({message: <i>'Hello world'</i>, title: <i>'Sample'</i>, type: <i>'confirm'</i>})
+    </pre>
+
+    <p><b>short hand:</b> accepts 4 parameters <br/>
+        (message, string title [optional], on confirm callback function [optional],  on cancel callback function [optional] )  <br/>
+        <a onclick="popup.confirm('hello world')">Demo 1</a>
+        <a onclick="popup.confirm('hello world','HEADING TITLE')">Demo 2</a>
+        <a onclick="popup.confirm('hello world','HEADING TITLE',function(){alert('confirmed')}, function(){alert('canceled')})">Demo 3</a>
+    </p> 
+    <pre>
+        //demo 1
+        popup.confirm(<i>'hello world'</i>)
+
+        //demo 2
+        popup.confirm(<i>'hello world'</i>, <i>'HEADING TITLE'</i>)
+
+        //demo 3
+        popup.confirm(<i>'hello world'</i>, <i>'HEADING TITLE'</i>, <i>function(){alert('confirmed')}</i>, <i>function(){alert('canceled')}</i>)
+    </pre>
+
+    <h2>POPUP WITH EXTERNAL PAGE</h2>
+    <a onclick="popup.open({url:'page.html'})">Demo 1</a> 
+     <a onclick="popup.open({url:'page.php',data: {str: 'Hello'}})">Demo 2</a>
+    <pre>
+        //demo 1
+        popup.open({url: <i>'page.html'</i>})
+
+        //demo 2
+        popup.open({url: <i>'page.php'</i>, data: <i>{str: 'Hello'}</i>})
+    </pre>
+
+    <p><b>short hand:</b> params: (url, object)  <a onclick="popup.load('page.html')">Demo 1</a>  <a onclick="popup.load('page.php',{str:'Hello'})">Demo 2</a> </p>
+    
+    <pre>
+        //demo 1
+        popup.load(<i>'page.html'</i>)
+        
+        //demo 2
+        popup.load(<i>'page.php'</i>, <i>{str:'Hello'}</i>)
+    </pre>
+
+    <div class="footer">
+        <p>Documented by: Jay Ramirez</p>
+        <p>NuWorks Interactive Labs</p>
+    </div>
+ 
+</div>
+</body>
+</html>

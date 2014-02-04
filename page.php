@@ -4,5 +4,5 @@
 	<p>This is a popup with separate html or php file.</p>
 
 	<p>Here is your data: <?php echo $_GET['str']?></p>
-	
+	 
 </div>
